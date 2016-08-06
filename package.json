@@ -1,0 +1,51 @@
+{
+  "name": "jwt-generator",
+  "author": "Oron Nadiv <oron@nadiv.us> (https://github.com/OronNadiv/)",
+  "homepage": "https://github.com/OronNadiv/jwt-generator/",
+  "bugs": "https://github.com/OronNadiv/jwt-generator/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OronNadiv/jwt-generator.git"
+  },
+  "license": "AGPL-3.0",
+  "version": "2.0.5",
+  "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src --out-dir lib --source-maps --minified",
+    "cover": "istanbul cover _mocha -- --recursive -t 10000",
+    "lint": "eslint .",
+    "prepublish": "npm run compile",
+    "test": "mocha --recursive -t 10000 && npm run lint",
+    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --recursive -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "dependencies": {
+    "bluebird": "^3",
+    "bluebird-retry": "^0.8",
+    "coveralls": "^2",
+    "debug": "^2",
+    "getmac": "^1",
+    "http-as-promised": "^1",
+    "jsonwebtoken": "^7",
+    "lru-cache": "^4",
+    "moment": ">=2.11.2 <3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6",
+    "babel-preset-es2015": "^6",
+    "coveralls": "^2",
+    "eslint": "^3",
+    "eslint-config-standard": "^5",
+    "eslint-plugin-promise": "^2",
+    "eslint-plugin-standard": "^2",
+    "istanbul": "^0.4",
+    "mocha": "^3",
+    "nock": "^8",
+    "should": "^10"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
