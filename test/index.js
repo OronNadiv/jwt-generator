@@ -1,5 +1,3 @@
-process.env.LOG_LEVEL = 'verbose'
-
 const fs = require('fs')
 const path = require('path')
 const privateKey = fs.readFileSync(path.join(__dirname, 'private_key.pem'))

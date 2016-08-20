@@ -6,4 +6,3 @@ coverage
 src
 test
 **/*.log
-**/*.log.*

@@ -22,13 +22,12 @@
   "dependencies": {
     "bluebird": "^3",
     "bluebird-retry": "^0.8",
-    "coveralls": "^2",
     "debug": "^2",
     "getmac": "^1",
     "http-as-promised": "^1",
     "jsonwebtoken": "^7",
     "lru-cache": "^4",
-    "moment": ">=2.11.2 <3"
+    "moment": "^2.11.2"
   },
   "devDependencies": {
     "babel-cli": "^6",
@@ -41,7 +40,7 @@
     "istanbul": "^0.4",
     "mocha": "^3",
     "nock": "^8",
-    "should": "^10"
+    "should": "^11"
   },
   "babel": {
     "presets": [
