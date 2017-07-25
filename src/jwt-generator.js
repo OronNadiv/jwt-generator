@@ -54,7 +54,7 @@ payload: ${JSON.stringify(payload)}`
       {
         algorithm: 'RS256',
         audience: audience || 'urn:home-automation/*',
-        expiresIn: expiresIn || EXPIRATION_IN_SECONDS, /* default: ten minutes*/
+        expiresIn: expiresIn || EXPIRATION_IN_SECONDS, /* default: ten minutes */
         issuer: this.issuer,
         subject: subject
       }

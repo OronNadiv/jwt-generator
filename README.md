@@ -68,10 +68,10 @@ while the latter will always generate new token by calling the [authentication][
 [server-installation-instruction-url]: https://oronnadiv.github.io/home-automation/#installation-instructions-for-the-server-micro-services
 [private-public-keys-url]: https://oronnadiv.github.io/home-automation/#generating-private-and-public-keys
 
-[alarm-url]: https://github.com/OronNadiv/alarm-api
+[alarm-url]: https://github.com/OronNadiv/alarm-system-api
 [auth-url]: https://github.com/OronNadiv/authentication-api
 [camera-url]: https://github.com/OronNadiv/camera-api
-[garage-url]: https://github.com/OronNadiv/garage-api
+[garage-url]: https://github.com/OronNadiv/garage-door-api
 [notifications-url]: https://github.com/OronNadiv/notifications-api
 [push-url]: https://github.com/OronNadiv/push-api
 [storage-url]: https://github.com/OronNadiv/storage-api
