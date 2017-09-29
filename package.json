@@ -22,7 +22,7 @@
   "dependencies": {
     "bluebird": "^3",
     "bluebird-retry": "^0.8",
-    "debug": "^2",
+    "debug": "^3.1.0",
     "getmac": "^1",
     "http-as-promised": "^1",
     "jsonwebtoken": "^7",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "babel-cli": "^6",
     "babel-preset-es2015": "^6",
-    "coveralls": "^2",
+    "coveralls": "^3.0.0",
     "eslint": "^4",
     "eslint-config-standard": "^10",
     "eslint-plugin-import": "^2",
