@@ -8,7 +8,7 @@
     "url": "https://github.com/OronNadiv/jwt-generator.git"
   },
   "license": "AGPL-3.0",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
   "main": "lib/index.js",
   "scripts": {
@@ -19,6 +19,9 @@
     "test": "mocha --recursive -t 10000 && npm run lint",
     "test-coveralls": "istanbul cover _mocha --report lcovonly -- --recursive -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "bluebird": "^3",
     "bluebird-retry": ">=0.8 <0.12",
@@ -30,6 +33,7 @@
     "moment": "^2.11.2"
   },
   "devDependencies": {
+    "ajv": "^5.2.3",
     "babel-cli": "^6",
     "babel-preset-env": "^1.6.0",
     "coveralls": "^3.0.0",
