@@ -8,7 +8,7 @@
     "url": "https://github.com/OronNadiv/jwt-generator.git"
   },
   "license": "AGPL-3.0",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
   "main": "dist/index.js",
   "scripts": {
@@ -29,16 +29,19 @@
     "debug": "^3.1.0",
     "getmac": "^1",
     "http-as-promised": "^1",
+    "joi": "^11.3.4",
     "jsonwebtoken": ">=7 <9",
     "lru-cache": "^4",
     "moment": "^2.11.2"
   },
   "devDependencies": {
     "ajv": "^5.2.3",
-    "babel-cli": "^6",
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
+    "chance": "^1.0.11",
     "coveralls": "^3.0.0",
-    "eslint": "^4",
+    "eslint": "^4.8.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-mocha": "^4.11.0",
@@ -46,10 +49,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "istanbul": "^0.4",
-    "mocha": ">=3 <5",
-    "nock": ">=8 <10",
-    "rimraf": "^2.6.2",
-    "should": ">=11 <14"
+    "mocha": "^4.0.1",
+    "nock": "^9.0.22",
+    "rimraf": "^2.6.2"
   },
   "babel": {
     "presets": [

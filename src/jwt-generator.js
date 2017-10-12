@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const Promise = require('bluebird')
 const http = require('http-as-promised')
 const url = require('url')
+const Joi = require('joi')
 
 const cacheOptions = {
   max: 10,
@@ -12,10 +13,21 @@ const cacheOptions = {
 
 const cache = require('lru-cache')(cacheOptions)
 
-const getKey = (subject, audience, payload) => {
-  return `issuer: ${this.issuer}
-loginUrl: ${this.loginUrl}
-privateKey: ${this.privateKey}
+const schemaGetKey = Joi.object().keys({
+  subject: Joi.string().required(),
+  audience: Joi.string().required(),
+  payload: Joi.any().required(),
+  issuer: Joi.string().required(),
+  loginUrl: Joi.string().required(),
+  privateKey: Joi.string().required()
+})
+const getKey = (options) => {
+  Joi.validate(options, schemaGetKey)
+  const {subject, audience, payload, issuer, loginUrl, privateKey} = options
+
+  return `issuer: ${issuer}
+loginUrl: ${loginUrl}
+privateKey: ${privateKey}
 subject: ${subject}
 audience: ${audience}
 payload: ${JSON.stringify(payload)}`
@@ -47,7 +59,14 @@ class JWTGenerator {
     subject = getSubject(subject)
     payload = deleteJWTPayloadKeys(payload)
 
-    const key = getKey(subject, audience, payload)
+    const key = getKey({
+      subject,
+      audience,
+      payload,
+      issuer: this.issuer,
+      loginUrl: this.loginUrl,
+      privateKey: this.privateKey
+    })
     let token = cache.get(key)
     if (token) {
       return Promise.resolve(token)
@@ -83,7 +102,14 @@ class JWTGenerator {
     subject = getSubject(subject)
     payload = deleteJWTPayloadKeys(payload)
 
-    const key = getKey(subject, audience, payload)
+    const key = getKey({
+      subject,
+      audience,
+      payload,
+      issuer: this.issuer,
+      loginUrl: this.loginUrl,
+      privateKey: this.privateKey
+    })
     cache.del(key)
     return this.make(subject, audience, payload, expiresIn)
   }

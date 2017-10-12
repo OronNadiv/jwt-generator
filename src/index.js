@@ -59,7 +59,7 @@ expiresIn: ${expiresIn}`)
     const self = this
     return this._make(
       self.loginUrl, self.privateKey, self.issuer, self.useRetry,
-      (jwtGenerator, mac) => jwtGenerator.make(subject, audience, payload || {mac: mac}, expiresIn))
+      (jwtGenerator, mac) => jwtGenerator.make(subject, audience, payload || {mac}, expiresIn))
   }
 
   makeNewToken (subject, audience, payload, expiresIn) {
