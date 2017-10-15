@@ -8,7 +8,7 @@
     "url": "https://github.com/OronNadiv/jwt-generator.git"
   },
   "license": "AGPL-3.0",
-  "version": "2.0.8",
+  "version": "3.0.0",
   "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
   "main": "dist/index.js",
   "scripts": {
@@ -17,8 +17,8 @@
     "cover": "istanbul cover _mocha -- --recursive -t 10000",
     "lint": "eslint .",
     "prepublish": "npm run build",
-    "test": "mocha --recursive -t 10000 && npm run lint",
-    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --recursive -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "npm run build && npm run lint && cross-env DEBUG=\"* -babel\" nyc mocha --recursive -t 10000 --exit",
+    "test:coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "files": [
     "dist"
@@ -29,7 +29,7 @@
     "debug": "^3.1.0",
     "getmac": "^1",
     "http-as-promised": "^1",
-    "joi": "^11.3.4",
+    "joi-browser": "^10.6.1",
     "jsonwebtoken": ">=7 <9",
     "lru-cache": "^4",
     "moment": "^2.11.2"
@@ -41,6 +41,7 @@
     "chai": "^4.1.2",
     "chance": "^1.0.11",
     "coveralls": "^3.0.0",
+    "cross-env": "^5.0.5",
     "eslint": "^4.8.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
@@ -48,9 +49,9 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "^0.4",
     "mocha": "^4.0.1",
     "nock": "^9.0.22",
+    "nyc": "^11.2.1",
     "rimraf": "^2.6.2"
   },
   "babel": {

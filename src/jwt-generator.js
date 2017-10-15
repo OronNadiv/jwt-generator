@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const Promise = require('bluebird')
 const http = require('http-as-promised')
 const url = require('url')
-const Joi = require('joi')
+const Joi = require('joi-browser')
 
 const cacheOptions = {
   max: 10,
@@ -55,7 +55,7 @@ class JWTGenerator {
     this.privateKey = privateKey
   }
 
-  make (subject, audience, payload, expiresIn) {
+  make ({subject, audience, payload, expiresIn}) {
     subject = getSubject(subject)
     payload = deleteJWTPayloadKeys(payload)
 
@@ -98,7 +98,7 @@ class JWTGenerator {
       .tap((token) => cache.set(key, token))
   }
 
-  makeNew (subject, audience, payload, expiresIn) {
+  makeNew ({subject, audience, payload, expiresIn}) {
     subject = getSubject(subject)
     payload = deleteJWTPayloadKeys(payload)
 
@@ -111,7 +111,7 @@ class JWTGenerator {
       privateKey: this.privateKey
     })
     cache.del(key)
-    return this.make(subject, audience, payload, expiresIn)
+    return this.make({subject, audience, payload, expiresIn})
   }
 }
 

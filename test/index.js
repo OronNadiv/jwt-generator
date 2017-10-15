@@ -1,11 +1,14 @@
 const fs = require('fs')
 const path = require('path')
 const privateKey = fs.readFileSync(path.join(__dirname, 'private_key.pem'))
-const JWTGenerator = require('../src/index')
+const JWTGenerator = require('../dist/index')
 const nock = require('nock')
 const Promise = require('bluebird')
 const Chance = require('chance')
 const chance = new Chance()
+
+const loginUrl = 'http://localhost:3001'
+const issuer = 'urn:test/me'
 
 require('chai').should()
 
@@ -18,7 +21,7 @@ describe('Generate token', () => {
     subject = Math.random() > 0.5
       ? chance.string() : ''
     subject = chance.string()
-    nock('http://localhost:3001')
+    nock(loginUrl)
       .post('/tokens')
       .once() // keep this once! Tests relay on it.
       .reply(200, {token})
@@ -29,24 +32,29 @@ describe('Generate token', () => {
   })
 
   it('should generate token', () => {
-    const jwtGenerator = new JWTGenerator('http://localhost:3001', privateKey, true, 'urn:test/me')
+    const jwtGenerator = new JWTGenerator({
+      loginUrl,
+      privateKey,
+      useRetry: true,
+      issuer
+    })
 
     return Promise
-      .resolve(jwtGenerator.makeToken(subject))
+      .resolve(jwtGenerator.makeToken({subject}))
       .then(token => {
         token.should.eql(token)
       })
   })
 
   it('should fetch token from cache', () => {
-    const jwtGenerator = new JWTGenerator('http://localhost:3001', privateKey, false, 'urn:test/me')
+    const jwtGenerator = new JWTGenerator({loginUrl, privateKey, useRetry: false})
 
     return Promise
-      .resolve(jwtGenerator.makeToken(subject))
+      .resolve(jwtGenerator.makeToken({subject}))
       .then(token => {
         token.should.eql(token)
         return Promise
-          .resolve(jwtGenerator.makeToken(subject))
+          .resolve(jwtGenerator.makeToken({subject}))
           .then(token => {
             token.should.eql(token)
           })
@@ -54,10 +62,10 @@ describe('Generate token', () => {
   })
 
   it('should generate new token', () => {
-    const jwtGenerator = new JWTGenerator('http://localhost:3001', privateKey, true, 'urn:test/me')
+    const jwtGenerator = new JWTGenerator({loginUrl, privateKey, useRetry: true, issuer})
 
     return Promise
-      .resolve(jwtGenerator.makeNewToken(subject))
+      .resolve(jwtGenerator.makeNewToken({subject}))
       .then(token => {
         token.should.eql(token)
       })
@@ -65,30 +73,30 @@ describe('Generate token', () => {
 
   it('should generate new token with retry', () => {
     nock.cleanAll()
-    const jwtGenerator = new JWTGenerator('http://localhost:3001', privateKey, true, 'urn:test/me')
+    const jwtGenerator = new JWTGenerator({loginUrl, privateKey, useRetry: true, issuer})
 
-    nock('http://localhost:3001')
+    nock(loginUrl)
       .post('/tokens')
       .once()
       .reply(500)
 
-    nock('http://localhost:3001')
+    nock(loginUrl)
       .post('/tokens')
       .once()
       .reply(200, {token: token})
 
     return Promise
-      .resolve(jwtGenerator.makeNewToken(subject))
+      .resolve(jwtGenerator.makeNewToken({subject}))
       .then(token => {
         token.should.eql(token)
       })
   })
 
   it('should generate token for machine', () => {
-    const jwtGenerator = new JWTGenerator('http://localhost:3001', privateKey, true)
+    const jwtGenerator = new JWTGenerator({loginUrl, privateKey, useRetry: true})
 
     return Promise
-      .resolve(jwtGenerator.makeNewToken(subject))
+      .resolve(jwtGenerator.makeNewToken({subject}))
       .then(token => {
         token.should.eql(token)
       })
