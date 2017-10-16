@@ -35,10 +35,12 @@ payload: ${JSON.stringify(payload)}`
 
 const deleteJWTPayloadKeys = (payload) => {
   payload = Object.assign({}, payload)
-  delete payload.aud
-  delete payload.exp
   delete payload.iss
   delete payload.sub
+  delete payload.aud
+  delete payload.exp
+  delete payload.nbf
+  delete payload.iat
   delete payload.jti
 
   return payload
