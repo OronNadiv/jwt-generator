@@ -8,7 +8,7 @@
     "url": "https://github.com/OronNadiv/jwt-generator.git"
   },
   "license": "AGPL-3.0",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
   "main": "dist/index.js",
   "scripts": {
