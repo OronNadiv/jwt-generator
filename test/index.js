@@ -13,9 +13,9 @@ const issuer = 'urn:test/me'
 require('chai').should()
 
 describe('Generate token', () => {
+  'use strict'
   let token
   let subject
-
   beforeEach(() => {
     token = chance.string()
     subject = Math.random() > 0.5
