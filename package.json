@@ -10,7 +10,7 @@
   "license": "AGPL-3.0",
   "engines": {
     "node": ">=4 <9",
-    "npm": ">=2 <9"
+    "npm": ">=2 <6"
   },
   "version": "3.0.1",
   "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
@@ -18,7 +18,6 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && babel src --out-dir dist --source-maps --minified",
-    "cover": "istanbul cover _mocha -- --recursive -t 10000",
     "lint": "eslint .",
     "prepublish": "npm run build",
     "test": "npm run build && npm run lint && cross-env DEBUG=\"* -babel\" nyc mocha --recursive -t 10000 --exit",
