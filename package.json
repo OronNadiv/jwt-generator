@@ -44,7 +44,7 @@
     "chai": "^4.1.2",
     "chance": "^1.0.11",
     "coveralls": "^3.0.0",
-    "cross-env": "^5.0.5",
+    "cross-env": "^5.1.0",
     "eslint": "^4.8.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
