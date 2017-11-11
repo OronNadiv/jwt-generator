@@ -32,7 +32,7 @@
     "debug": "^3.1.0",
     "getmac": "^1",
     "http-as-promised": "^1",
-    "joi-browser": "^10.6.1",
+    "joi-browser": "^13.0.1",
     "jsonwebtoken": ">=7 <9",
     "lru-cache": "^4",
     "moment": "^2.11.2"
