@@ -12,7 +12,7 @@
     "node": ">=4 <9",
     "npm": ">=2 <6"
   },
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
   "main": "dist/index.js",
   "scripts": {
@@ -38,14 +38,14 @@
     "moment": "^2.19.3"
   },
   "devDependencies": {
-    "ajv": "^5.3.0",
+    "ajv": "^5.5.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "chance": "^1.0.12",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.0",
-    "eslint": "^4.11.0",
+    "eslint": "^4.12.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-mocha": "^4.11.0",
@@ -53,8 +53,8 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^4.0.1",
-    "nock": "^9.1.0",
-    "nyc": "^11.3.0",
+    "nock": "^9.1.3",
+    "nyc": "^11.4.0",
     "rimraf": "^2.6.2"
   },
   "babel": {
