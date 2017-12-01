@@ -35,7 +35,7 @@
     "joi-browser": "^13.0.1",
     "jsonwebtoken": ">=7 <9",
     "lru-cache": "^4",
-    "moment": "^2.11.2"
+    "moment": "^2.19.3"
   },
   "devDependencies": {
     "ajv": "^5.3.0",
