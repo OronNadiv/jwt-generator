@@ -12,7 +12,7 @@
     "node": ">=4 <9",
     "npm": ">=2 <6"
   },
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Generates 'json web token' (JWT) by using the API of the authentication server.",
   "main": "dist/index.js",
   "scripts": {
